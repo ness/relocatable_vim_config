@@ -8,8 +8,10 @@
 " script
 let s:current_path = fnamemodify(resolve(expand('<sfile>:p')), ':h')
 
-let &runtimepath=s:current_path . "/vim,"
-let &runtimepath=&runtimepath . s:current_path . "/vim/after"
+let rtp=[]
+call add(rtp, s:current_path . "/vim")
+call add(rtp, s:current_path . "/vim/after")
+let &runtimepath = join(rtp, ",")
 
 runtime bundle/pathogen/autoload/pathogen.vim
 
